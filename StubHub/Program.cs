@@ -26,6 +26,8 @@ namespace Viagogo
     }
     public class Solution
     {
+        
+        
         static async Task Main(string[] args)
         {
             var events = new List<Event>
@@ -58,12 +60,12 @@ namespace Viagogo
                 }
 
             }
-            /*
-            * We want you to send an email to this customer with all events in their city
-            * Just call AddToEmail(customer, event) for each event you think they should get
-            */
+            // /*
+            // * We want you to send an email to this customer with all events in their city
+            // * Just call AddToEmail(customer, event) for each event you think they should get
+            // */
 
-           // 2.TASK
+            //// 2.TASK
 
             Console.Out.WriteLine("\n\nEvents Close to Customers City\n\n\n");
             foreach (var cust in Customers)
@@ -83,7 +85,7 @@ namespace Viagogo
             }
 
 
-           // 3.TASK
+            //// 3.TASK
             Console.Out.WriteLine("\n\nEvents Close to Customers City With Expensive Call \n\n\n");
 
             foreach (var cust in Customers)
@@ -94,22 +96,49 @@ namespace Viagogo
             }
 
 
-            // 5. TASK
+            ////  5. TASK
             Console.Out.WriteLine("\n\nDynamic Sorting \n\n\n");
-
-            
-
             var sortvalues = new List<Expression<Func<Event, object>>>
-            {
-                 x => x.City,
-                 x => x.Date,
-               
-            };
-           var sorted =  Sort<Event>(events, sortvalues, true );
+             {
+                  x => x.City,
+                  x => x.Date,
 
-            foreach(var e in sorted)
+             };
+            var sorted = Sort<Event>(events, sortvalues, true);
+
+            foreach (var e in sorted)
             {
                 Console.Out.WriteLine($"Event:  {e.Name} in {e.City} on {e.Date.ToLongDateString()}");
+            }
+
+
+            var sortByPrice = new List<Expression<Func<Event, object>>>
+            {
+                 x => GetPrice(x),
+            };
+            var sortedByPrice = Sort(events, sortByPrice, true);
+
+         
+            Console.WriteLine("\n\n\nSorting By Price");
+            foreach (var e in sortedByPrice)
+            {
+                Console.Out.WriteLine($"Event:  {e.Name} in {e.City} for price ${GetPrice(e)}");
+            }
+          
+            var currentLocation = "New York";   
+           
+            var sortByDistance = new List<Expression<Func<Event, object>>>
+            {
+                 x => GetDistance(currentLocation, x.City),
+            };
+
+            var sortedByDistance = Sort(events, sortByDistance, true);
+
+            Console.WriteLine($"\n\n\nSorting By Distance From {currentLocation}");
+         
+            foreach (var e in sortedByDistance)
+            {
+                Console.Out.WriteLine($"Event:  {e.Name} in {e.City}  and  distance : {GetDistance(currentLocation, e.City)}");
             }
 
         }
@@ -168,6 +197,8 @@ namespace Viagogo
 
             Task.Delay(5000);
             return Task.Factory.StartNew(() =>  AlphebiticalDistance(fromCity, toCity));
+
+            _cache.SetAs
         }
 
         // You do not need to know how these methods work
