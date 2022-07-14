@@ -192,10 +192,40 @@ improve the code written in 2? Write the code.
         };
        var sorted =  Sort<Event>(events, sortvalues, true );
         
+        Console.WriteLine("\n\n\nSorting By City and then Date");
         foreach(var e in sorted)
         {
             Console.Out.WriteLine($"Event:  {e.Name} in {e.City} on {e.Date.ToLongDateString()}");
         }
+        
+         var sortByPrice = new List<Expression<Func<Event, object>>>
+            {
+                 x => GetPrice(x),
+            };
+            var sortedByPrice = Sort(events, sortByPrice, true);
+
+         
+            Console.WriteLine("\n\n\nSorting By Price");
+            foreach (var e in sortedByPrice)
+            {
+                Console.Out.WriteLine($"Event:  {e.Name} in {e.City} for price ${GetPrice(e)}");
+            }
+          
+            var currentLocation = "New York";   
+           
+            var sortByDistance = new List<Expression<Func<Event, object>>>
+            {
+                 x => GetDistance(currentLocation, x.City),
+            };
+
+            var sortedByDistance = Sort(events, sortByDistance, true);
+
+            Console.WriteLine($"\n\n\nSorting By Distance From {currentLocation}");
+         
+            foreach (var e in sortedByDistance)
+            {
+                Console.Out.WriteLine($"Event:  {e.Name} in {e.City}  and  distance : {GetDistance(currentLocation, e.City)}");
+            }
         
         //helper Sort function
         static IList<T> Sort<T>(IList<T> list,List<Expression<Func<T, object>>> orderExpressions, bool isAscending = false) where T :class
