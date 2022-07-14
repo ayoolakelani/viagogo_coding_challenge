@@ -381,3 +381,11 @@ improve the code written in 2? Write the code.
             Assert.IsTrue(sortedByDate.Last().City == "Boston");
         }
 ```
+  - Output
+  <p align="center">
+<img src="/images/john_smith_output_4.png" 
+        alt="Picture" 
+        width="600" 
+        height="200" 
+        style="display: block; margin: 0 auto" />
+  </p>
