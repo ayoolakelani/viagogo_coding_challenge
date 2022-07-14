@@ -1,10 +1,7 @@
 # viagogo_coding_challenge
 
 
-# Stubhub Coding Assessment
 ## Task 1
-
-
 
 1. What should be your approach to getting the list of events?
     - Select all unique events in the event list 
