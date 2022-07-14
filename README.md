@@ -25,7 +25,14 @@
             }
     ```
 3. What is the expected output if we only have the client John Smith?
-    ![Task 1 output] (/Images/john_smith_output_1.png)
+ <p align="center">
+<img src="/images/john_smith_output_1.png" 
+        alt="Picture" 
+        width="300" 
+        height="100" 
+        style="display: block; margin: 0 auto" />
+  </p>
+  
 4. Do you believe there is a way to improve the code you first wrote?
    - AddToEmail can be changed to recive a list of customers as this will prevent the inner loop when calling AddToEmail
     ```csharp
@@ -80,7 +87,13 @@
         }
     ```
 3. What is the expected output if we only have the client John Smith?
-    ![task 2 output](/Images/john_smith_output_2.png)
+ <p align="center">
+<img src="/images/john_smith_output_2.png" 
+        alt="Picture" 
+        width="300" 
+        height="100" 
+        style="display: block; margin: 0 auto" />
+  </p>
 4. Do you believe there is a way to improve the code you first wrote?
    - Events Class can be extended to have a distance from location 
     ```csharp
@@ -209,7 +222,13 @@ improve the code written in 2? Write the code.
         }
  ```
   - Output
-  ![Task 3  output](/Images/john_smith_output_3.png)
+  <p align="center">
+<img src="/images/john_smith_output_3.png" 
+        alt="Picture" 
+        width="600" 
+        height="200" 
+        style="display: block; margin: 0 auto" />
+  </p>
 # One of the questions is: how do you verify that what you’ve done is correct.
     - Write Unit Test for each function
 
