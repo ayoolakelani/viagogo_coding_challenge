@@ -139,12 +139,20 @@ improve the code written in 2? Write the code.
 
     GetDistance should be converted to a asynchronus method  so that it can be awaited to free resources
     
+    Use Cache to hold data to prevent API calls
+    
     ```csharp
-      static Task<int> GetDistanceAsync(string fromCity, string toCity)
+        static async Task<int> GetDistanceAsync(string fromCity, string toCity)
         {
-           //a long running task
-           Task.Delay(5000);
-            return Task.Factory.StartNew(() => AlphebiticalDistance(fromCity, toCity));
+            int? distance = _cache.GetValueOrDefault(new Tuple<string, string>(fromCity, toCity));
+                    if (distance == null)
+                    {
+                        Task.Delay(5000);
+                         distance = await Task.Factory.StartNew(() => AlphebiticalDistance(fromCity, toCity));
+
+                        _cache.Add(new Tuple<string, string>(fromCity, toCity), distance.Value);
+                    }
+                 return distance.Value;
         }
     ```
  # Task 4 
