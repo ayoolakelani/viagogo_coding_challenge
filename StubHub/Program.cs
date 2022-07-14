@@ -1,5 +1,6 @@
 ﻿
 
+using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,8 +27,9 @@ namespace Viagogo
     }
     public class Solution
     {
-        
-        
+
+        static Dictionary<Tuple<string, string>, int> _cache = new Dictionary<Tuple<string, string>, int>();
+
         static async Task Main(string[] args)
         {
             var events = new List<Event>
@@ -192,13 +194,17 @@ namespace Viagogo
         }
 
 
-        public static Task<int> GetDistanceAsync(string fromCity, string toCity)
+        public static async Task<int> GetDistanceAsync(string fromCity, string toCity)
         {
+            int? distance = _cache.GetValueOrDefault(new Tuple<string, string>(fromCity, toCity));
+                    if (distance == null)
+                    {
+                        Task.Delay(5000);
+                         distance = await Task.Factory.StartNew(() => AlphebiticalDistance(fromCity, toCity));
 
-            Task.Delay(5000);
-            return Task.Factory.StartNew(() =>  AlphebiticalDistance(fromCity, toCity));
-
-            _cache.SetAs
+                        _cache.Add(new Tuple<string, string>(fromCity, toCity), distance.Value);
+                    }
+                 return distance.Value;
         }
 
         // You do not need to know how these methods work
