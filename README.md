@@ -386,6 +386,6 @@ improve the code written in 2? Write the code.
 <img src="/images/john_smith_output_4.png" 
         alt="Picture" 
         width="600" 
-        height="200" 
+        height="300" 
         style="display: block; margin: 0 auto" />
   </p>
