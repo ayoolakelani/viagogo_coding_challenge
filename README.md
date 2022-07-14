@@ -94,18 +94,23 @@
         height="100" 
         style="display: block; margin: 0 auto" />
   </p>
+  
 4. Do you believe there is a way to improve the code you first wrote?
-   - Events Class can be extended to have a distance from location 
+    - Events Class can be extended to have a distance from location 
+    
     ```csharp
-     public class Event
-    {
-        public string Name { get; set; }
-        public string City { get; set; }
-        public int Distance { get; set; }
-    }
+         public class Event
+        {
+            public string Name { get; set; }
+            public string City { get; set; }
+            public int Distance { get; set; }
+        }
     ```
+    
    - We can the order each Events based on Distance 
    - Use dynamic type to make it simple and shorter and cleaner(eliminates creating a distance vairable in event class)
+    
+    
     ```csharp
       static IEnumerable<Event> GetEventsDistanceFromCity(string fromCity, IEnumerable<Event> allEvents)
         {
@@ -114,9 +119,11 @@
             events.AddRange(eventWithDistances.OrderBy(x => x.distance).Take(5).Select(x => new Event { City = x.City, Name = x.Name }));
             return events;
         }
-    ````
+    ```
+    
    - we can make the number of events to return dynamic and return X amount of event
-        ```csharp
+      
+       ```csharp
         static IEnumerable<Event> GetEventsDistanceFromCity(string fromCity, IEnumerable<Event> allEvents, int count = 5)
         {
             var events = new List<Event>();
@@ -124,13 +131,14 @@
             events.AddRange(eventWithDistances.OrderBy(x => x.distance).Take(count).Select(x => new Event { City = x.City, Name = x.Name }));
             return events;
         }
-        ````
+        ```
 
 # Task 3
 1.  If the GetDistance method is an API call which could fail or is too expensive, how will u
 improve the code written in 2? Write the code.
 
-    - GetDistance should be converted to a asynchronus method  so that it can be awaited to free resources
+    GetDistance should be converted to a asynchronus method  so that it can be awaited to free resources
+    
     ```csharp
       static Task<int> GetDistanceAsync(string fromCity, string toCity)
         {
@@ -184,10 +192,40 @@ improve the code written in 2? Write the code.
         };
        var sorted =  Sort<Event>(events, sortvalues, true );
         
+        Console.WriteLine("\n\n\nSorting By City and then Date");
         foreach(var e in sorted)
         {
             Console.Out.WriteLine($"Event:  {e.Name} in {e.City} on {e.Date.ToLongDateString()}");
         }
+        
+         var sortByPrice = new List<Expression<Func<Event, object>>>
+            {
+                 x => GetPrice(x),
+            };
+            var sortedByPrice = Sort(events, sortByPrice, true);
+
+         
+            Console.WriteLine("\n\n\nSorting By Price");
+            foreach (var e in sortedByPrice)
+            {
+                Console.Out.WriteLine($"Event:  {e.Name} in {e.City} for price ${GetPrice(e)}");
+            }
+          
+            var currentLocation = "New York";   
+           
+            var sortByDistance = new List<Expression<Func<Event, object>>>
+            {
+                 x => GetDistance(currentLocation, x.City),
+            };
+
+            var sortedByDistance = Sort(events, sortByDistance, true);
+
+            Console.WriteLine($"\n\n\nSorting By Distance From {currentLocation}");
+         
+            foreach (var e in sortedByDistance)
+            {
+                Console.Out.WriteLine($"Event:  {e.Name} in {e.City}  and  distance : {GetDistance(currentLocation, e.City)}");
+            }
         
         //helper Sort function
         static IList<T> Sort<T>(IList<T> list,List<Expression<Func<T, object>>> orderExpressions, bool isAscending = false) where T :class
@@ -386,6 +424,6 @@ improve the code written in 2? Write the code.
 <img src="/images/john_smith_output_4.png" 
         alt="Picture" 
         width="600" 
-        height="200" 
+        height="300" 
         style="display: block; margin: 0 auto" />
   </p>
