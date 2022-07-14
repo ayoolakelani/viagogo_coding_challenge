@@ -260,17 +260,17 @@ improve the code written in 2? Write the code.
         public void When_Events_More_Than_5_GetEventDistanceFromCityAsync_Should_Return_5()
         {
             var events = new List<Event>
-                                        {
-                                            new Event{ Name = "Phantom of the Opera", City = "New York", Date = new DateTime(2022,10,1)},
-                                            new Event{ Name = "Metallica", City = "Los Angeles", Date = new DateTime(2022,6,17)},
-                                            new Event{ Name = "Metallica", City = "New York", Date = new DateTime(2022,8,10)},
-                                            new Event{ Name = "Metallica", City = "Boston", Date = new DateTime(2022,11,15)},
-                                            new Event{ Name = "LadyGaGa", City = "New York", Date = new DateTime(2022,8,1)},
-                                            new Event{ Name = "LadyGaGa", City = "Boston", Date = new DateTime(2022,7,25)},
-                                            new Event{ Name = "LadyGaGa", City = "Chicago", Date = new DateTime(2022,10,1)},
-                                            new Event{ Name = "LadyGaGa", City = "San Francisco", Date = new DateTime(2022,11,3)},
-                                            new Event{ Name = "LadyGaGa", City = "Washington", Date = new DateTime(2022,10,1)},
-                                        };
+                    {
+                        new Event{ Name = "Phantom of the Opera", City = "New York", Date = new DateTime(2022,10,1)},
+                        new Event{ Name = "Metallica", City = "Los Angeles", Date = new DateTime(2022,6,17)},
+                        new Event{ Name = "Metallica", City = "New York", Date = new DateTime(2022,8,10)},
+                        new Event{ Name = "Metallica", City = "Boston", Date = new DateTime(2022,11,15)},
+                        new Event{ Name = "LadyGaGa", City = "New York", Date = new DateTime(2022,8,1)},
+                        new Event{ Name = "LadyGaGa", City = "Boston", Date = new DateTime(2022,7,25)},
+                        new Event{ Name = "LadyGaGa", City = "Chicago", Date = new DateTime(2022,10,1)},
+                        new Event{ Name = "LadyGaGa", City = "San Francisco", Date = new DateTime(2022,11,3)},
+                        new Event{ Name = "LadyGaGa", City = "Washington", Date = new DateTime(2022,10,1)},
+                    };
       
             var top5events = Solution.GetEventsDistanceFromCity("New York", events);
             Assert.IsTrue(top5events.Count() == 5, "The actualCount must be 5");
@@ -308,17 +308,17 @@ improve the code written in 2? Write the code.
         public void GetEventsCloseToBirthDate_Should_Return_Event_In_Same_Month_As_Date()
         {
             var events = new List<Event>
-                                        {
-                                            new Event{ Name = "Phantom of the Opera", City = "New York", Date = new DateTime(2022,10,1)},
-                                            new Event{ Name = "Metallica", City = "Los Angeles", Date = new DateTime(2022,6,17)},
-                                            new Event{ Name = "Metallica", City = "New York", Date = new DateTime(2022,8,10)},
-                                            new Event{ Name = "Metallica", City = "Boston", Date = new DateTime(2022,11,15)},
-                                            new Event{ Name = "LadyGaGa", City = "New York", Date = new DateTime(2022,8,1)},
-                                            new Event{ Name = "LadyGaGa", City = "Boston", Date = new DateTime(2022,7,25)},
-                                            new Event{ Name = "LadyGaGa", City = "Chicago", Date = new DateTime(2022,10,1)},
-                                            new Event{ Name = "LadyGaGa", City = "San Francisco", Date = new DateTime(2022,11,3)},
-                                            new Event{ Name = "LadyGaGa", City = "Washington", Date = new DateTime(2022,10,1)},
-                                        };
+                    {
+                        new Event{ Name = "Phantom of the Opera", City = "New York", Date = new DateTime(2022,10,1)},
+                        new Event{ Name = "Metallica", City = "Los Angeles", Date = new DateTime(2022,6,17)},
+                        new Event{ Name = "Metallica", City = "New York", Date = new DateTime(2022,8,10)},
+                        new Event{ Name = "Metallica", City = "Boston", Date = new DateTime(2022,11,15)},
+                        new Event{ Name = "LadyGaGa", City = "New York", Date = new DateTime(2022,8,1)},
+                        new Event{ Name = "LadyGaGa", City = "Boston", Date = new DateTime(2022,7,25)},
+                        new Event{ Name = "LadyGaGa", City = "Chicago", Date = new DateTime(2022,10,1)},
+                        new Event{ Name = "LadyGaGa", City = "San Francisco", Date = new DateTime(2022,11,3)},
+                        new Event{ Name = "LadyGaGa", City = "Washington", Date = new DateTime(2022,10,1)},
+                    };
 
             var dateevents = Solution.GetEventsCloseToBirthDate(new DateTime(1882,8,18), events);
             Assert.IsTrue(dateevents.All(x => x.Date.Month == 8), "All Months musr be 8");
@@ -327,17 +327,17 @@ improve the code written in 2? Write the code.
         public void Sort_should_return_events_sorted_by_date()
         {
             var events = new List<Event>
-                                        {
-                                            new Event{ Name = "Phantom of the Opera", City = "New York", Date = new DateTime(2022,10,1)},
-                                            new Event{ Name = "Metallica", City = "Los Angeles", Date = new DateTime(2022,6,17)},
-                                            new Event{ Name = "Metallica", City = "New York", Date = new DateTime(2022,8,10)},
-                                            new Event{ Name = "Metallica", City = "Boston", Date = new DateTime(2022,11,15)},
-                                            new Event{ Name = "LadyGaGa", City = "New York", Date = new DateTime(2022,8,1)},
-                                            new Event{ Name = "LadyGaGa", City = "Boston", Date = new DateTime(2022,7,25)},
-                                            new Event{ Name = "LadyGaGa", City = "Chicago", Date = new DateTime(2022,10,1)},
-                                            new Event{ Name = "LadyGaGa", City = "San Francisco", Date = new DateTime(2022,11,3)},
-                                            new Event{ Name = "LadyGaGa", City = "Washington", Date = new DateTime(2022,10,1)},
-                                        };
+                {
+                    new Event{ Name = "Phantom of the Opera", City = "New York", Date = new DateTime(2022,10,1)},
+                    new Event{ Name = "Metallica", City = "Los Angeles", Date = new DateTime(2022,6,17)},
+                    new Event{ Name = "Metallica", City = "New York", Date = new DateTime(2022,8,10)},
+                    new Event{ Name = "Metallica", City = "Boston", Date = new DateTime(2022,11,15)},
+                    new Event{ Name = "LadyGaGa", City = "New York", Date = new DateTime(2022,8,1)},
+                    new Event{ Name = "LadyGaGa", City = "Boston", Date = new DateTime(2022,7,25)},
+                    new Event{ Name = "LadyGaGa", City = "Chicago", Date = new DateTime(2022,10,1)},
+                    new Event{ Name = "LadyGaGa", City = "San Francisco", Date = new DateTime(2022,11,3)},
+                    new Event{ Name = "LadyGaGa", City = "Washington", Date = new DateTime(2022,10,1)},
+                };
             var sortvalues = new List<Expression<Func<Event, object>>>
             {
                  x => x.Date,
